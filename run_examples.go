@@ -19,4 +19,5 @@ func main() {
 	examples.ExerciseProjects(apiClient)
 	examples.ExerciseAccounts(apiClient)
 	examples.ExerciseTasks(apiClient)
+	examples.ExerciseContacts(apiClient)
 }

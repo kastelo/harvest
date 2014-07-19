@@ -20,6 +20,7 @@ type APIClient struct {
 	Invoice *InvoiceService
 	Account *AccountService
 	Task    *TaskService
+	Contact *ContactService
 }
 
 func newAPIClient(subdomain string, httpClient *http.Client) (c *APIClient) {
@@ -38,6 +39,7 @@ func newAPIClient(subdomain string, httpClient *http.Client) (c *APIClient) {
 	c.Invoice = &InvoiceService{Service{c}}
 	c.Account = &AccountService{Service{c}}
 	c.Task = &TaskService{Service{c}}
+	c.Contact = &ContactService{Service{c}}
 	return
 }
 
