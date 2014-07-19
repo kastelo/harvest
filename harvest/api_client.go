@@ -14,11 +14,12 @@ type APIClient struct {
 	subdomain  string
 	httpClient *http.Client
 
-	Client  *ClientService
-	People  *PersonService
-	Project *ProjectService
-	Invoice *InvoiceService
-	Account *AccountService
+	Client          *ClientService
+	People          *PersonService
+	Project         *ProjectService
+	Invoice         *InvoiceService
+	Account         *AccountService
+	ExpenseCategory *ExpenseCategoryService
 }
 
 func newAPIClient(subdomain string, httpClient *http.Client) (c *APIClient) {
@@ -36,6 +37,7 @@ func newAPIClient(subdomain string, httpClient *http.Client) (c *APIClient) {
 	c.Project = &ProjectService{Service{c}}
 	c.Invoice = &InvoiceService{Service{c}}
 	c.Account = &AccountService{Service{c}}
+	c.ExpenseCategory = &ExpenseCategoryService{Service{c}}
 	return
 }
 
