@@ -42,41 +42,39 @@ func newAPIClient(subdomain string, httpClient *http.Client) (c *APIClient) {
 	c.Task = &TaskService{Service{c}}
 	c.Contact = &ContactService{Service{c}}
 	c.ExpenseCategory = &ExpenseCategoryService{Service{c}}
-	return
+	return c
 }
 
 func NewAPIClientWithBasicAuth(username, password, subdomain string) (c *APIClient) {
 	c = newAPIClient(subdomain, nil)
 	c.username = username
 	c.password = password
-	return
+	return c
 }
 
 func NewAPIClientWithAuthToken(token, subdomain string) (c *APIClient) {
 	t := &oauth.Transport{
 		Token: &oauth.Token{AccessToken: token},
 	}
-
 	c = newAPIClient(subdomain, t.Client())
-
-	return
+	return c
 }
 
 func (c *APIClient) GetJSON(path string) (err error, jsonResponse []byte) {
 	resourceURL := fmt.Sprintf("https://%v.harvestapp.com%v", c.subdomain, path)
 	request, err := http.NewRequest("GET", resourceURL, nil)
 	if err != nil {
-		return
+		return err, []byte("")
 	}
 
 	request.SetBasicAuth(c.username, c.password)
 	resp, err := c.httpClient.Do(request)
 
 	if err != nil {
-		return
+		return err, []byte("")
 	}
 
 	defer resp.Body.Close()
 	jsonResponse, err = ioutil.ReadAll(resp.Body)
-	return
+	return err, jsonResponse
 }

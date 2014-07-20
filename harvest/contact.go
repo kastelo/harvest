@@ -1,8 +1,6 @@
 package harvest
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type ContactService struct {
 	Service
@@ -23,30 +21,25 @@ type Contact struct {
 }
 
 type ContactResponse struct {
-	Contact Contact
+	Contact `json:"contact"`
 }
 
-func (c *ContactService) List() (err error, contacts []Contact) {
+func (c *ContactService) List() (err error, contacts []ContactResponse) {
 	resourceURL := "/contacts.json"
-	var contactResponse []ContactResponse
-	err = c.list(resourceURL, &contactResponse)
+	var resp []ContactResponse
+	err = c.list(resourceURL, &resp)
 	if err != nil {
-		return
+		return err, resp
 	}
-
-	for _, element := range contactResponse {
-		contacts = append(contacts, element.Contact)
+	for _, element := range resp {
+		contacts = append(contacts, element)
 	}
-	return
+	return err, contacts
 }
 
-func (c *ContactService) Find(contactID int) (err error, contact Contact) {
+func (c *ContactService) Find(contactID int) (err error, contact ContactResponse) {
 	resourceURL := fmt.Sprintf("/contacts/%v.json", contactID)
-	var contactResponse ContactResponse
-	err = c.find(resourceURL, &contactResponse)
-	if err != nil {
-		return
-	}
-	contact = contactResponse.Contact
-	return
+	var resp ContactResponse
+	err = c.find(resourceURL, &resp)
+	return err, resp
 }

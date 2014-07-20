@@ -41,26 +41,25 @@ type Invoice struct {
 }
 
 type InvoiceResponse struct {
-	Invoice Invoice `json:"invoices"`
+	Invoice `json:"invoices"`
 }
 
-func (i *InvoiceService) List() (err error, invoices []Invoice) {
+func (i *InvoiceService) List() (err error, invoices []InvoiceResponse) {
 	resourceURL := "/invoices.json"
-	var invoiceResponse []InvoiceResponse
-	err = i.list(resourceURL, &invoiceResponse)
+	var resp []InvoiceResponse
+	err = i.list(resourceURL, &resp)
 	if err != nil {
-		return
+		return err, resp
 	}
-	for _, element := range invoiceResponse {
-		invoices = append(invoices, element.Invoice)
+	for _, element := range resp {
+		invoices = append(invoices, element)
 	}
-	return
+	return err, invoices
 }
 
-func (i *InvoiceService) Find(invoiceID int) (err error, invoice Invoice) {
+func (i *InvoiceService) Find(invoiceID int) (err error, invoice InvoiceResponse) {
 	resourceURL := fmt.Sprintf("/invoices/%v.json", invoiceID)
-	var invoiceResponse InvoiceResponse
-	err = i.find(resourceURL, &invoiceResponse)
-
-	return err, invoiceResponse.Invoice
+	var resp InvoiceResponse
+	err = i.find(resourceURL, &resp)
+	return err, resp
 }

@@ -1,8 +1,9 @@
 package examples
 
 import (
-	"../harvest"
 	"fmt"
+
+	"../harvest"
 )
 
 func ExerciseExpenseCategories(apiClient *harvest.APIClient) {

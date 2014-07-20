@@ -4,6 +4,14 @@ type AccountService struct {
 	Service
 }
 
+// Specifies what Harvest modules a company is configured to use
+type Modules struct {
+	Expenses  bool `json:"expenses"`
+	Invoices  bool `json:"invoices"`
+	Estimates bool `json:"estimates"`
+	Approval  bool `json:"approval"`
+}
+
 type Company struct {
 	BaseURI            string  `json:"base_uri"`
 	FullDomain         string  `json:"full_domain"`
@@ -26,6 +34,5 @@ type Account struct {
 func (a *AccountService) Find() (err error, account Account) {
 	resourceURL := "/account/who_am_i.json"
 	err = a.find(resourceURL, &account)
-
 	return err, account
 }

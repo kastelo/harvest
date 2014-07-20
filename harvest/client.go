@@ -23,26 +23,25 @@ type Client struct {
 }
 
 type ClientResponse struct {
-	Client Client
+	Client `json:"client"`
 }
 
-func (c *ClientService) List() (err error, clients []Client) {
+func (c *ClientService) List() (err error, clients []ClientResponse) {
 	resourceURL := "/clients.json"
-	var clientResponse []ClientResponse
-	err = c.list(resourceURL, &clientResponse)
+	var resp []ClientResponse
+	err = c.list(resourceURL, &resp)
 	if err != nil {
-		return
+		return err, resp
 	}
-	for _, element := range clientResponse {
-		clients = append(clients, element.Client)
+	for _, element := range resp {
+		clients = append(clients, element)
 	}
-	return
+	return err, clients
 }
 
-func (c *ClientService) Find(clientID int) (err error, client Client) {
+func (c *ClientService) Find(clientID int) (err error, client ClientResponse) {
 	resourceURL := fmt.Sprintf("/clients/%v.json", clientID)
-	var clientResponse ClientResponse
-	err = c.find(resourceURL, &clientResponse)
-
-	return err, clientResponse.Client
+	var resp ClientResponse
+	err = c.find(resourceURL, &resp)
+	return err, resp
 }

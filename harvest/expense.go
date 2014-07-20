@@ -20,30 +20,25 @@ type ExpenseCategory struct {
 }
 
 type ExpenseCategoryResponse struct {
-	ExpenseCategory ExpenseCategory `json:"expense_category"`
+	ExpenseCategory `json:"expense_category"`
 }
 
-func (c *ExpenseCategoryService) List() (err error, expenseCategories []ExpenseCategory) {
+func (c *ExpenseCategoryService) List() (err error, expenseCategories []ExpenseCategoryResponse) {
 	resourceURL := "/expense_categories.json"
-	var expenseCategoryResponse []ExpenseCategoryResponse
-	err = c.list(resourceURL, &expenseCategoryResponse)
+	var resp []ExpenseCategoryResponse
+	err = c.list(resourceURL, &resp)
 	if err != nil {
-		return
+		return err, resp
 	}
-
-	for _, element := range expenseCategoryResponse {
-		expenseCategories = append(expenseCategories, element.ExpenseCategory)
+	for _, element := range resp {
+		expenseCategories = append(expenseCategories, element)
 	}
-	return
+	return err, expenseCategories
 }
 
-func (c *ExpenseCategoryService) Find(expenseCategoryID int) (err error, expense ExpenseCategory) {
-	resourceURL := fmt.Sprintf("/expense_categories/%v.json", expenseCategoryID)
-	var expenseCategoryResponse ExpenseCategoryResponse
-	err = c.find(resourceURL, &expenseCategoryResponse)
-	if err != nil {
-		return
-	}
-	expense = expenseCategoryResponse.ExpenseCategory
-	return
+func (c *ExpenseCategoryService) Find(catId int) (err error, expense ExpenseCategoryResponse) {
+	resourceURL := fmt.Sprintf("/expense_categories/%v.json", catId)
+	var resp ExpenseCategoryResponse
+	err = c.find(resourceURL, &resp)
+	return err, resp
 }

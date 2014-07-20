@@ -1,8 +1,6 @@
 package harvest
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type TaskService struct {
 	Service
@@ -23,25 +21,25 @@ type TaskResponse struct {
 	Task `json:"task"`
 }
 
-func (c *TaskService) List() (err error, tasks []Task) {
+func (c *TaskService) List() (err error, tasks []TaskResponse) {
 	resourceURL := "/tasks.json"
-	var taskResponse []TaskResponse
-	err = c.list(resourceURL, &taskResponse)
+	var resp []TaskResponse
+	err = c.list(resourceURL, &resp)
 	if err != nil {
-		return
+		return err, resp
 	}
-	for _, element := range taskResponse {
-		tasks = append(tasks, element.Task)
+	for _, element := range resp {
+		tasks = append(tasks, element)
 	}
 	return err, tasks
 }
 
 func (c *TaskService) Find(taskID int) (err error, task TaskResponse) {
 	resourceURL := fmt.Sprintf("/tasks/%v.json", taskID)
-	var taskResponse TaskResponse
-	err = c.find(resourceURL, &taskResponse)
+	var resp TaskResponse
+	err = c.find(resourceURL, &resp)
 	if err != nil {
 		return
 	}
-	return err, taskResponse
+	return err, resp
 }

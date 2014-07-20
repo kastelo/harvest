@@ -37,27 +37,25 @@ type Person struct {
 }
 
 type PersonResponse struct {
-	Person Person `json:"user"`
+	Person `json:"user"`
 }
 
-func (c *PersonService) List() (err error, people []Person) {
+func (c *PersonService) List() (err error, people []PersonResponse) {
 	resourceURL := "/people.json"
-	var personResponse []PersonResponse
-	err = c.list(resourceURL, &personResponse)
+	var resp []PersonResponse
+	err = c.list(resourceURL, &resp)
 	if err != nil {
-		return
+		return err, resp
 	}
-
-	for _, element := range personResponse {
-		people = append(people, element.Person)
+	for _, element := range resp {
+		people = append(people, element)
 	}
-	return
+	return err, people
 }
 
-func (c *PersonService) Find(personID int) (err error, person Person) {
+func (c *PersonService) Find(personID int) (err error, person PersonResponse) {
 	resourceURL := fmt.Sprintf("/people/%v.json", personID)
-	var personResponse PersonResponse
-	err = c.find(resourceURL, &personResponse)
-	person = personResponse.Person
-	return
+	var resp PersonResponse
+	err = c.find(resourceURL, &resp)
+	return err, resp
 }

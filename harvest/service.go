@@ -1,8 +1,6 @@
 package harvest
 
-import (
-	"encoding/json"
-)
+import "encoding/json"
 
 type Service struct {
 	apiClient *APIClient
@@ -13,10 +11,7 @@ func (service Service) find(resourceURL string, unmarshalContainer interface{}) 
 	if err != nil {
 		return
 	}
-
-	err = json.Unmarshal(contents, unmarshalContainer)
-
-	return
+	return json.Unmarshal(contents, unmarshalContainer)
 }
 
 func (service Service) list(resourceURL string, unmarshalContainer interface{}) (err error) {
@@ -24,7 +19,5 @@ func (service Service) list(resourceURL string, unmarshalContainer interface{}) 
 	if err != nil {
 		return
 	}
-
-	err = json.Unmarshal(contents, &unmarshalContainer)
-	return
+	return json.Unmarshal(contents, &unmarshalContainer)
 }

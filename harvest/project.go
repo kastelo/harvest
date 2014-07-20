@@ -1,8 +1,6 @@
 package harvest
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type ProjectService struct {
 	Service
@@ -32,31 +30,27 @@ type Project struct {
 	HintLatestRecordAt               HarvestDate `json:"hint_latest_record_at"`
 }
 
+// Wrapper for simple unmarshalling of JSON data
 type ProjectResponse struct {
-	Project Project
+	Project `json:"project"`
 }
 
-func (c *ProjectService) List() (err error, projects []Project) {
+func (c *ProjectService) List() (err error, projects []ProjectResponse) {
 	resourceURL := "/projects.json"
-	var projectResponse []ProjectResponse
-	err = c.list(resourceURL, &projectResponse)
+	var resp []ProjectResponse
+	err = c.list(resourceURL, &resp)
 	if err != nil {
-		return
+		return err, resp
 	}
-
-	for _, element := range projectResponse {
-		projects = append(projects, element.Project)
+	for _, element := range resp {
+		projects = append(projects, element)
 	}
-	return
+	return err, projects
 }
 
-func (c *ProjectService) Find(projectID int) (err error, project Project) {
+func (c *ProjectService) Find(projectID int) (err error, project ProjectResponse) {
 	resourceURL := fmt.Sprintf("/projects/%v.json", projectID)
-	var projectResponse ProjectResponse
-	err = c.find(resourceURL, &projectResponse)
-	if err != nil {
-		return
-	}
-	project = projectResponse.Project
-	return
+	var resp ProjectResponse
+	err = c.find(resourceURL, &resp)
+	return err, resp
 }
