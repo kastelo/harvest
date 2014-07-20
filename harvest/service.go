@@ -1,6 +1,8 @@
 package harvest
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
 type Service struct {
 	apiClient *APIClient
