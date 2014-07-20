@@ -60,21 +60,21 @@ func NewAPIClientWithAuthToken(token, subdomain string) (c *APIClient) {
 	return c
 }
 
-func (c *APIClient) GetJSON(path string) (err error, jsonResponse []byte) {
+func (c *APIClient) GetJSON(path string) (jsonResponse []byte, err error) {
 	resourceURL := fmt.Sprintf("https://%v.harvestapp.com%v", c.subdomain, path)
 	request, err := http.NewRequest("GET", resourceURL, nil)
 	if err != nil {
-		return err, []byte("")
+		return []byte(""), err
 	}
 
 	request.SetBasicAuth(c.username, c.password)
 	resp, err := c.httpClient.Do(request)
 
 	if err != nil {
-		return err, []byte("")
+		return []byte(""), err
 	}
 
 	defer resp.Body.Close()
 	jsonResponse, err = ioutil.ReadAll(resp.Body)
-	return err, jsonResponse
+	return jsonResponse, err
 }

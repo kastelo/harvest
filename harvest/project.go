@@ -35,22 +35,22 @@ type ProjectResponse struct {
 	Project `json:"project"`
 }
 
-func (c *ProjectService) List() (err error, projects []ProjectResponse) {
+func (c *ProjectService) List() (projects []ProjectResponse, err error) {
 	resourceURL := "/projects.json"
 	var resp []ProjectResponse
 	err = c.list(resourceURL, &resp)
 	if err != nil {
-		return err, resp
+		return resp, err
 	}
 	for _, element := range resp {
 		projects = append(projects, element)
 	}
-	return err, projects
+	return projects, err
 }
 
-func (c *ProjectService) Find(projectID int) (err error, project ProjectResponse) {
+func (c *ProjectService) Find(projectID int) (project ProjectResponse, err error) {
 	resourceURL := fmt.Sprintf("/projects/%v.json", projectID)
 	var resp ProjectResponse
 	err = c.find(resourceURL, &resp)
-	return err, resp
+	return resp, err
 }

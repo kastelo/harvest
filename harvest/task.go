@@ -21,25 +21,25 @@ type TaskResponse struct {
 	Task `json:"task"`
 }
 
-func (c *TaskService) List() (err error, tasks []TaskResponse) {
+func (c *TaskService) List() (tasks []TaskResponse, err error) {
 	resourceURL := "/tasks.json"
 	var resp []TaskResponse
 	err = c.list(resourceURL, &resp)
 	if err != nil {
-		return err, resp
+		return resp, err
 	}
 	for _, element := range resp {
 		tasks = append(tasks, element)
 	}
-	return err, tasks
+	return tasks, err
 }
 
-func (c *TaskService) Find(taskID int) (err error, task TaskResponse) {
+func (c *TaskService) Find(taskID int) (task TaskResponse, err error) {
 	resourceURL := fmt.Sprintf("/tasks/%v.json", taskID)
 	var resp TaskResponse
 	err = c.find(resourceURL, &resp)
 	if err != nil {
 		return
 	}
-	return err, resp
+	return resp, err
 }

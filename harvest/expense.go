@@ -19,26 +19,26 @@ type ExpenseCategory struct {
 	CreatedAt   time.Time `json:"created_at"`
 }
 
-type ExpenseCategoryResponse struct {
+type CategoryResponse struct {
 	ExpenseCategory `json:"expense_category"`
 }
 
-func (c *ExpenseCategoryService) List() (err error, expenseCategories []ExpenseCategoryResponse) {
+func (c *ExpenseCategoryService) List() (expenseCategories []CategoryResponse, err error) {
 	resourceURL := "/expense_categories.json"
-	var resp []ExpenseCategoryResponse
+	var resp []CategoryResponse
 	err = c.list(resourceURL, &resp)
 	if err != nil {
-		return err, resp
+		return resp, err
 	}
 	for _, element := range resp {
 		expenseCategories = append(expenseCategories, element)
 	}
-	return err, expenseCategories
+	return expenseCategories, err
 }
 
-func (c *ExpenseCategoryService) Find(catId int) (err error, expense ExpenseCategoryResponse) {
+func (c *ExpenseCategoryService) Find(catId int) (expense CategoryResponse, err error) {
 	resourceURL := fmt.Sprintf("/expense_categories/%v.json", catId)
-	var resp ExpenseCategoryResponse
+	var resp CategoryResponse
 	err = c.find(resourceURL, &resp)
-	return err, resp
+	return resp, err
 }

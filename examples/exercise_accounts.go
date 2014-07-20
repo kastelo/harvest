@@ -7,7 +7,7 @@ import (
 )
 
 func ExerciseAccounts(apiClient *harvest.APIClient) {
-	err, account := apiClient.Account.Find()
+	account, err := apiClient.Account.Find()
 	if err != nil {
 		fmt.Printf("\n%v\n", err)
 	} else {

@@ -40,22 +40,22 @@ type PersonResponse struct {
 	Person `json:"user"`
 }
 
-func (c *PersonService) List() (err error, people []PersonResponse) {
+func (c *PersonService) List() (people []PersonResponse, err error) {
 	resourceURL := "/people.json"
 	var resp []PersonResponse
 	err = c.list(resourceURL, &resp)
 	if err != nil {
-		return err, resp
+		return resp, err
 	}
 	for _, element := range resp {
 		people = append(people, element)
 	}
-	return err, people
+	return people, err
 }
 
-func (c *PersonService) Find(personID int) (err error, person PersonResponse) {
+func (c *PersonService) Find(personID int) (person PersonResponse, err error) {
 	resourceURL := fmt.Sprintf("/people/%v.json", personID)
 	var resp PersonResponse
 	err = c.find(resourceURL, &resp)
-	return err, resp
+	return resp, err
 }

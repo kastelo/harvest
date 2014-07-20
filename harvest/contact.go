@@ -24,22 +24,22 @@ type ContactResponse struct {
 	Contact `json:"contact"`
 }
 
-func (c *ContactService) List() (err error, contacts []ContactResponse) {
+func (c *ContactService) List() (contacts []ContactResponse, err error) {
 	resourceURL := "/contacts.json"
 	var resp []ContactResponse
 	err = c.list(resourceURL, &resp)
 	if err != nil {
-		return err, resp
+		return resp, err
 	}
 	for _, element := range resp {
 		contacts = append(contacts, element)
 	}
-	return err, contacts
+	return contacts, err
 }
 
-func (c *ContactService) Find(contactID int) (err error, contact ContactResponse) {
+func (c *ContactService) Find(contactID int) (contact ContactResponse, err error) {
 	resourceURL := fmt.Sprintf("/contacts/%v.json", contactID)
 	var resp ContactResponse
 	err = c.find(resourceURL, &resp)
-	return err, resp
+	return resp, err
 }

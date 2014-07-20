@@ -7,12 +7,12 @@ import (
 )
 
 func ExerciseContacts(apiClient *harvest.APIClient) {
-	err, contacts := apiClient.Contact.List()
+	contacts, err := apiClient.Contact.List()
 	if err != nil {
 		fmt.Printf("\n%v\n", err)
 	} else {
 		fmt.Printf("%+v\n", contacts)
-		err, contact := apiClient.Contact.Find(contacts[0].Id)
+		contact, err := apiClient.Contact.Find(contacts[0].Id)
 		if err != nil {
 			fmt.Printf("\n%v\n", err)
 		} else {
