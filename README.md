@@ -1,15 +1,20 @@
 # go-harvest
 
-go-harvest is a Go client library for accessing the Harvest Time Tracking API
+go-harvest is a Go client library for accessing the Harvest API
 
 ## Disclaimer
 
-As of 3/18/14 this library is still under active development and missing things that would make it useful on it's own.
+This is a fork of an in-progress repository. I'm developing it both to
+satisfy my API needs and to learn Go.
+
+![Gopher n00b](http://i.imgur.com/ZGD7g81.gif)
+
+n00b code ahead.
 
 ## Usage
 
 ```go
-import "github.com/backforty/go-harvest/harvest"
+import "github.com/bennylope/go-harvest/harvest"
 ```
 
 Construct a new Harvest client, then use the client to access the Harvest API.
