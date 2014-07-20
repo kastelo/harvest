@@ -20,7 +20,7 @@ type Task struct {
 }
 
 type TaskResponse struct {
-	Task Task
+	Task `json:"task"`
 }
 
 func (c *TaskService) List() (err error, tasks []Task) {
@@ -30,20 +30,18 @@ func (c *TaskService) List() (err error, tasks []Task) {
 	if err != nil {
 		return
 	}
-
 	for _, element := range taskResponse {
 		tasks = append(tasks, element.Task)
 	}
-	return
+	return err, tasks
 }
 
-func (c *TaskService) Find(taskID int) (err error, task Task) {
+func (c *TaskService) Find(taskID int) (err error, task TaskResponse) {
 	resourceURL := fmt.Sprintf("/tasks/%v.json", taskID)
 	var taskResponse TaskResponse
 	err = c.find(resourceURL, &taskResponse)
 	if err != nil {
 		return
 	}
-	task = taskResponse.Task
-	return
+	return err, taskResponse
 }
