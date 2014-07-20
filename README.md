@@ -1,6 +1,6 @@
 # go-harvest
 
-go-harvest is a Go client library for accessing the Harvest API
+go-harvest is a Go client library for accessing the [Harvest API](https://github.com/harvesthq/api).
 
 ## Disclaimer
 
