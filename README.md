@@ -7,7 +7,7 @@ go-harvest is a Go client library for accessing the Harvest API
 This is a fork of an in-progress repository. I'm developing it both to
 satisfy my API needs and to learn Go.
 
-![Gopher n00b](http://i.imgur.com/ZGD7g81.gif)
+[![Gopher n00b](http://i.imgur.com/ZGD7g81.gif)](http://pbfcomics.com/50)
 
 n00b code ahead.
 
@@ -31,3 +31,4 @@ person := apiClient.People.Find(123123)
 
 ## License
 This library is distributed under the MIT-style license found in the [LICENSE](./LICENSE) file.
+
