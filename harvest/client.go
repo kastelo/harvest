@@ -26,10 +26,11 @@ type ClientResponse struct {
 	Client `json:"client"`
 }
 
-func (c *ClientService) List() (clients []ClientResponse, err error) {
+func (c *ClientService) List() ([]ClientResponse, error) {
 	resourceURL := "/clients.json"
 	var resp []ClientResponse
-	err = c.list(resourceURL, &resp)
+  var clients []ClientResponse
+  err := c.list(resourceURL, &resp)
 	if err != nil {
 		return resp, err
 	}
@@ -39,9 +40,9 @@ func (c *ClientService) List() (clients []ClientResponse, err error) {
 	return clients, err
 }
 
-func (c *ClientService) Find(clientID int) (client ClientResponse, err error) {
+func (c *ClientService) Find(clientID int) (ClientResponse, error) {
 	resourceURL := fmt.Sprintf("/clients/%v.json", clientID)
 	var resp ClientResponse
-	err = c.find(resourceURL, &resp)
+  err := c.find(resourceURL, &resp)
 	return resp, err
 }
