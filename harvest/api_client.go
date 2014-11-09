@@ -13,6 +13,7 @@ import (
 	"code.google.com/p/goauth2/oauth"
 )
 
+// APIClient contains credentials & data interfaces
 type APIClient struct {
 	// Authentication and connection information
 	username   string
@@ -28,7 +29,7 @@ type APIClient struct {
 	Account         *AccountService
 	Task            *TaskService
 	Contact         *ContactService
-	ExpenseCategory *ExpenseService
+	ExpenseCategory *ExpenseCategoryService
 	Entry           *EntryService
 }
 
@@ -49,7 +50,7 @@ func newAPIClient(subdomain string, httpClient *http.Client) (c *APIClient) {
 	c.Account = &AccountService{Service{c}}
 	c.Task = &TaskService{Service{c}}
 	c.Contact = &ContactService{Service{c}}
-	c.ExpenseCategory = &ExpenseService{Service{c}}
+	c.ExpenseCategory = &ExpenseCategoryService{Service{c}}
 	c.Entry = &EntryService{Service{c}}
 	return c
 }
