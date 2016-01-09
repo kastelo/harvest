@@ -2,6 +2,7 @@ package harvest
 
 import (
 	"fmt"
+	"testing"
 )
 
 func TestClients(t *testing.T) {
