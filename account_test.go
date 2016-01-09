@@ -1,7 +1,7 @@
 package harvest
 
 import (
-	"fmt"
+	"github.com/kr/pretty"
 	"testing"
 	"os"
 )
@@ -14,8 +14,9 @@ func TestAccounts(t *testing.T) {
 
 	account, err := apiClient.Account.Find()
 	if err != nil {
-		fmt.Printf("\n%v\n", err)
+		t.Fatalf("\n%v\n", err)
+		t.Fail()
 	} else {
-		fmt.Printf("\n%v\n", account)
+		t.Logf("%# v", pretty.Formatter(account))
 	}
 }
