@@ -3,6 +3,7 @@ package harvest
 import (
 	"fmt"
 	"testing"
+	"os"
 )
 
 func TestContacts(t *testing.T) {

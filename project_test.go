@@ -3,6 +3,7 @@ package harvest
 import (
 	"fmt"
 	"testing"
+	"os"
 )
 
 func TestProjects(t *testing.T) {
