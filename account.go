@@ -27,8 +27,8 @@ type Company struct {
 }
 
 type Account struct {
-	Company Company
-	Person  Person
+	Company Company `json:"company"`
+	Person  Person  `json:"user"`
 }
 
 func (a *AccountService) Find() (Account, error) {

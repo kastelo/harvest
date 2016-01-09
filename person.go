@@ -18,7 +18,7 @@ type Person struct {
 	DefaultHourlyRate            float32
 	FirstName                    string
 	LastName                     string
-	Email                        string
+	Email                        string   `json:"email"`
 	IdentityUrl                  string
 	OpensocialIdentifier         string
 	Telephone                    string
