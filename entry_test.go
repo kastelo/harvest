@@ -3,8 +3,6 @@ package harvest
 import (
 	"fmt"
 	"time"
-
-	"../harvest"
 )
 
 func TestProjectEntries(t *testing.T) {

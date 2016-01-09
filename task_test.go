@@ -2,8 +2,6 @@ package harvest
 
 import (
 	"fmt"
-
-	"../harvest"
 )
 
 func TestTasks(t *testing.T) {
