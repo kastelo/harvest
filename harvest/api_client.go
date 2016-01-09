@@ -7,10 +7,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"golang.org/x/net/context"
 	"os"
 	"strings"
 
-	"code.google.com/p/goauth2/oauth"
+	"golang.org/x/oauth2"
 )
 
 // APIClient contains credentials & data interfaces
@@ -83,10 +84,11 @@ func NewAPIClientWithBasicAuth(username, password, subdomain string) (c *APIClie
 // NewAPIClientWithAuthToken instantiates a new http.Client and returns a new
 // APIClient using an OAuth token
 func NewAPIClientWithAuthToken(token, subdomain string) (c *APIClient) {
-	t := &oauth.Transport{
-		Token: &oauth.Token{AccessToken: token},
-	}
-	c = newAPIClient(subdomain, t.Client())
+	client := oauth2.NewClient(
+		context.Background(),
+		oauth2.StaticTokenSource(
+			&oauth2.Token{AccessToken: token}))
+	c = newAPIClient(subdomain, client)
 	return c
 }
 
