@@ -6,7 +6,12 @@ import (
 	"../harvest"
 )
 
-func ExerciseProjects(apiClient *harvest.APIClient) {
+func TestProjects(t *testing.T) {
+	apiClient := NewAPIClientWithBasicAuth(
+		os.Getenv("HARVEST_USERNAME"),
+		os.Getenv("HARVEST_PASSWORD"),
+		os.Getenv("HARVEST_DOMAIN"))
+
 	projects, err := apiClient.Project.List()
 	if err != nil {
 		fmt.Printf("\n%v\n", err)

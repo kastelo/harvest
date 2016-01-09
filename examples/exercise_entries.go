@@ -7,7 +7,12 @@ import (
 	"../harvest"
 )
 
-func ExerciseProjectEntries(apiClient *harvest.APIClient) {
+func TestProjectEntries(t *testing.T) {
+	apiClient := NewAPIClientWithBasicAuth(
+		os.Getenv("HARVEST_USERNAME"),
+		os.Getenv("HARVEST_PASSWORD"),
+		os.Getenv("HARVEST_DOMAIN"))
+
 	from_time, _ := time.Parse("2006-01-02", "2014-01-01")
 	to_time, _ := time.Parse("2006-01-02", "2014-02-01")
 
@@ -28,7 +33,12 @@ func ExerciseProjectEntries(apiClient *harvest.APIClient) {
 	}
 }
 
-func ExercisePersonEntries(apiClient *harvest.APIClient) {
+func ExercisePersonEntries(t *testing.T) {
+	apiClient := NewAPIClientWithBasicAuth(
+		os.Getenv("HARVEST_USERNAME"),
+		os.Getenv("HARVEST_PASSWORD"),
+		os.Getenv("HARVEST_DOMAIN"))
+
 	from_time, _ := time.Parse("2006-01-02", "2014-01-01")
 	to_time, _ := time.Parse("2006-01-02", "2014-02-01")
 

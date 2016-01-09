@@ -6,7 +6,12 @@ import (
 	"../harvest"
 )
 
-func ExerciseExpenseCategories(apiClient *harvest.APIClient) {
+func TestExpenseCategories(t *testing.T) {
+	apiClient := NewAPIClientWithBasicAuth(
+		os.Getenv("HARVEST_USERNAME"),
+		os.Getenv("HARVEST_PASSWORD"),
+		os.Getenv("HARVEST_DOMAIN"))
+
 	expenseCategories, err := apiClient.ExpenseCategory.List()
 	if err != nil {
 		fmt.Printf("\n%v\n", err)
