@@ -3,7 +3,7 @@ package examples
 import (
 	"fmt"
 
-	"../go-harvest"
+	"../harvest"
 )
 
 func TestTasks(t *testing.T) {

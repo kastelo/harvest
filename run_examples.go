@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"./examples"
-	"./go-harvest"
+	"./harvest"
 )
 
 func main() {
