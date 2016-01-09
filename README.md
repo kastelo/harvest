@@ -5,7 +5,7 @@ go-harvest is a Go client library for accessing the [Harvest API](https://github
 ## Usage
 
 ```go
-import "github.com/PeterVerschuure/go-harvest/harvest"
+import "github.com/PeterVerschuure/go-harvest"
 ```
 
 Construct a new Harvest client, then use the client to access the Harvest API.

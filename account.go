@@ -1,4 +1,4 @@
-package harvest
+package go-harvest
 
 type AccountService struct {
 	Service

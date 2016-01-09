@@ -1,7 +1,7 @@
 /*
 Package harvest provides data structures and a wrapper for the Harvest API
 */
-package harvest
+package go-harvest
 
 import (
 	"fmt"

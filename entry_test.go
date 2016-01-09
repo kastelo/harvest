@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"../harvest"
+	"../go-harvest"
 )
 
 func TestProjectEntries(t *testing.T) {
