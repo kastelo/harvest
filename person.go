@@ -15,14 +15,14 @@ type Person struct {
 	DefaultExpenseProjectId      int
 	DefaultTaskId                int
 	DefaultTimeProjectId         int
-	DefaultHourlyRate            float32
-	FirstName                    string
-	LastName                     string
-	Email                        string    `json:"email"`
+	DefaultHourlyRate            float32	`json:"default_hourly_rate"`
+	FirstName                    string		`json:"first_name"`
+	LastName                     string		`json:"last_name"`
+	Email                        string		`json:"email"`
 	IdentityUrl                  string
 	OpensocialIdentifier         string
-	Telephone                    string
-	Timezone                     string
+	Telephone                    string		`json:"telephone"`
+	Timezone                     string		`json:"timezone"`
 	CostRate                     string
 	WeeklyDigestSentOn           string
 	Department                   string
