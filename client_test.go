@@ -12,6 +12,8 @@ func TestClients(t *testing.T) {
 		os.Getenv("HARVEST_PASSWORD"),
 		os.Getenv("HARVEST_DOMAIN"))
 
+	fmt.Printf("\n%v", "client_test:")		//Used for debugging
+
 	clients, err := apiClient.Client.List()
 	if err != nil {
 		fmt.Printf("\n%v\n", err)
@@ -21,6 +23,7 @@ func TestClients(t *testing.T) {
 		if err != nil {
 			fmt.Printf("\n%v\n", err)
 		} else {
+			fmt.Printf("\n%v", "Client test:")
 			fmt.Printf("\n%v\n", client)
 		}
 	}

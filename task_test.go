@@ -12,6 +12,8 @@ func TestTasks(t *testing.T) {
 		os.Getenv("HARVEST_PASSWORD"),
 		os.Getenv("HARVEST_DOMAIN"))
 
+	fmt.Printf("\n%v", "task_test:")		//Used for debugging
+
 	tasks, err := apiClient.Task.List()
 	if err != nil {
 		fmt.Printf("\n%v\n", err)

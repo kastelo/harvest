@@ -13,6 +13,8 @@ func TestProjectEntries(t *testing.T) {
 		os.Getenv("HARVEST_PASSWORD"),
 		os.Getenv("HARVEST_DOMAIN"))
 
+	fmt.Printf("\n%v", "entry_test:")		//Used for debugging
+
 	from_time, _ := time.Parse("2006-01-02", "2014-01-01")
 	to_time, _ := time.Parse("2006-01-02", "2014-02-01")
 
