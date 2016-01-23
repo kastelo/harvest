@@ -19,12 +19,12 @@ func TestContacts(t *testing.T) {
 	if err != nil {
 		fmt.Printf("\n%v\n", err)
 	} else {
-		fmt.Printf("\n%# v\n", pretty.Formatter(contacts))
+		fmt.Logf("\n%# v\n", pretty.Formatter(contacts))
 		contact, err := apiClient.Contact.Find(contacts[0].Id)
 		if err != nil {
 			fmt.Printf("\n%v\n", err)
 		} else {
-			fmt.Printf("\n%# v\n", pretty.Formatter(contact))
+			fmt.Logf("\n%# v\n", pretty.Formatter(contact))
 		}
 	}
 }

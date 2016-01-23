@@ -19,12 +19,12 @@ func TestProjects(t *testing.T) {
 	if err != nil {
 		fmt.Printf("\n%v\n", err)
 	} else {
-		fmt.Printf("\n%# v\n", pretty.Formatter(projects))
+		fmt.Logf("\n%# v\n", pretty.Formatter(projects))
 		project, err := apiClient.Project.Find(projects[0].Id)
 		if err != nil {
 			fmt.Printf("\n%v\n", err)
 		} else {
-			fmt.Printf("\n%# v\n", pretty.Formatter(project))
+			fmt.Logf("\n%# v\n", pretty.Formatter(project))
 		}
 	}
 }

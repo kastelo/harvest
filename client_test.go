@@ -19,14 +19,12 @@ func TestClients(t *testing.T) {
 	if err != nil {
 		fmt.Printf("\n%v\n", err)
 	} else {
-		fmt.Printf("\n%# v\n", pretty.Formatter(clients))
-		//fmt.Printf("\n%+v\n", clients)
+		fmt.Logf("\n%# v\n", pretty.Formatter(clients))
 		client, err := apiClient.Client.Find(clients[0].Id)
 		if err != nil {
 			fmt.Printf("\n%v\n", err)
 		} else {
-			fmt.Printf("\n%# v\n", pretty.Formatter(client))
-			//fmt.Printf("\n%v\n", client)
+			fmt.Logf("\n%# v\n", pretty.Formatter(client))
 		}
 	}
 }

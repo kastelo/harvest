@@ -20,8 +20,8 @@ func TestAccounts(t *testing.T) {
 		t.Fatalf("\n%v\n", err)
 		t.Fail()
 	} else {
-		// t.Logf("%# v", pretty.Formatter(account))
-		fmt.Printf("\n%# v\n", pretty.Formatter(account))
+		t.Logf("\n%# v\n", pretty.Formatter(account))
+		//fmt.Printf("\n%# v\n", pretty.Formatter(account))
 
 	}
 }

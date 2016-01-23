@@ -19,12 +19,12 @@ func TestPeople(t *testing.T) {
 	if err != nil {
 		fmt.Printf("\n%v\n", err)
 	} else {
-		fmt.Printf("\n%# v\n\n\n", pretty.Formatter(people))
+		fmt.Logf("\n%# v\n\n\n", pretty.Formatter(people))
 		person, err := apiClient.People.Find(people[0].Id)
 		if err != nil {
 			fmt.Printf("\n%v\n", err)
 		} else {
-			fmt.Printf("\n%# v\n\n\n", pretty.Formatter(person))
+			fmt.Logf("\n%# v\n\n\n", pretty.Formatter(person))
 		}
 	}
 }

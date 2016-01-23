@@ -16,8 +16,10 @@ func TestProjectEntries(t *testing.T) {
 
 	fmt.Printf("\n%v", "entry_test:")		//Used for debugging
 
-	from_time, _ := time.Parse("2006-01-02", "2014-01-01")
-	to_time, _ := time.Parse("2006-01-02", "2014-02-01")
+	//First argument defines format
+	//Date format: yyyy-mm-dd
+	from_time, _ := time.Parse("2006-01-02", "2016-01-01")
+	to_time, _ := time.Parse("2006-01-02", "2016-01-23")
 
 	projects, err := apiClient.Project.List()
 	if err != nil {
@@ -29,21 +31,22 @@ func TestProjectEntries(t *testing.T) {
 				fmt.Printf("Error: %v", err)
 			} else {
 				if len(entries) > 0 {
-					fmt.Printf("\n%# v\n", pretty.Formatter(entries[0]))
+					//fmt.Printf("\n%v\n", entries[0])
+					fmt.Logf("\n%# v\n", pretty.Formatter(entries[0]))
 				}
 			}
 		}
 	}
 }
 
-func ExercisePersonEntries(t *testing.T) {
+func TestPersonEntries(t *testing.T) {
 	apiClient := NewAPIClientWithBasicAuth(
 		os.Getenv("HARVEST_USERNAME"),
 		os.Getenv("HARVEST_PASSWORD"),
 		os.Getenv("HARVEST_DOMAIN"))
 
-	from_time, _ := time.Parse("2006-01-02", "2014-01-01")
-	to_time, _ := time.Parse("2006-01-02", "2014-02-01")
+	from_time, _ := time.Parse("2006-01-02", "2016-01-01")
+	to_time, _ := time.Parse("2006-01-02", "2016-01-23")
 
   people, err := apiClient.People.List()
 	if err != nil {
@@ -55,7 +58,8 @@ func ExercisePersonEntries(t *testing.T) {
 				fmt.Printf("Error: %v", err)
 			} else {
 				if len(entries) > 0 {
-					fmt.Printf("\n%# v\n", pretty.Formatter(entries[0])
+					//fmt.Printf("\n%v\n", entries[0])
+					fmt.Logf("\n%# v\n", pretty.Formatter(entries[0]))
 				}
 			}
 		}
