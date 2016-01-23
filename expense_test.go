@@ -19,12 +19,12 @@ func TestExpenseCategories(t *testing.T) {
 	if err != nil {
 		fmt.Printf("\n%v\n", err)
 	} else {
-		fmt.Logf("\n%# v\n", pretty.Formatter(expenseCategories))
+		t.Logf("\n%# v\n", pretty.Formatter(expenseCategories))
 		category, err := apiClient.ExpenseCategory.Find(expenseCategories[0].Id)
 		if err != nil {
 			fmt.Printf("\n%v\n", err)
 		} else {
-			fmt.Logf("\n%# v\n", pretty.Formatter(category))
+			t.Logf("\n%# v\n", pretty.Formatter(category))
 		}
 	}
 }

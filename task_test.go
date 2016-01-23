@@ -19,12 +19,12 @@ func TestTasks(t *testing.T) {
 	if err != nil {
 		fmt.Printf("\n%v\n", err)
 	} else {
-		fmt.Logf("\n%# v\n", pretty.Formatter(tasks))
+		t.Logf("\n%# v\n", pretty.Formatter(tasks))
 		task, err := apiClient.Task.Find(tasks[0].Id)
 		if err != nil {
 			fmt.Printf("\n%v\n", err)
 		} else {
-			fmt.Logf("\n%# v\n", pretty.Formatter(task))
+			t.Logf("\n%# v\n", pretty.Formatter(task))
 		}
 	}
 }

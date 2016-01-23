@@ -32,7 +32,7 @@ func TestProjectEntries(t *testing.T) {
 			} else {
 				if len(entries) > 0 {
 					//fmt.Printf("\n%v\n", entries[0])
-					fmt.Logf("\n%# v\n", pretty.Formatter(entries[0]))
+					t.Logf("\n%# v\n", pretty.Formatter(entries[0]))
 				}
 			}
 		}
@@ -59,7 +59,7 @@ func TestPersonEntries(t *testing.T) {
 			} else {
 				if len(entries) > 0 {
 					//fmt.Printf("\n%v\n", entries[0])
-					fmt.Logf("\n%# v\n", pretty.Formatter(entries[0]))
+					t.Logf("\n%# v\n", pretty.Formatter(entries[0]))
 				}
 			}
 		}

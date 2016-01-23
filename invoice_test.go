@@ -19,12 +19,12 @@ func TestInvoices(t *testing.T) {
 	if err != nil {
 		fmt.Printf("\n%v\n", err)
 	} else {
-		fmt.Logf("\n%# v\n", pretty.Formatter(invoices))
+		t.Logf("\n%# v\n", pretty.Formatter(invoices))
 		invoice, err := apiClient.Invoice.Find(invoices[0].Id)
 		if err != nil {
 			fmt.Printf("\n%v\n", err)
 		} else {
-			fmt.Logf("\n%# v\n", pretty.Formatter(invoice))
+			t.Logf("\n%# v\n", pretty.Formatter(invoice))
 		}
 	}
 }
