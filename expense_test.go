@@ -24,7 +24,7 @@ func TestExpenseCategories(t *testing.T) {
 		if err != nil {
 			fmt.Printf("\n%v\n", err)
 		} else {
-			fmt.Printf("%v\n", category)
+			fmt.Printf("\n%# v\n", pretty.Formatter(category))
 		}
 	}
 }

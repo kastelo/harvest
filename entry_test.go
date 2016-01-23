@@ -1,6 +1,7 @@
 package harvest
 
 import (
+	"github.com/kr/pretty"
 	"fmt"
 	"time"
 	"testing"
@@ -28,7 +29,7 @@ func TestProjectEntries(t *testing.T) {
 				fmt.Printf("Error: %v", err)
 			} else {
 				if len(entries) > 0 {
-					fmt.Printf("\n%v\n", entries[0])
+					fmt.Printf("\n%# v\n", pretty.Formatter(entries[0]))
 				}
 			}
 		}
@@ -54,7 +55,7 @@ func ExercisePersonEntries(t *testing.T) {
 				fmt.Printf("Error: %v", err)
 			} else {
 				if len(entries) > 0 {
-					fmt.Printf("\n%v\n", entries[0])
+					fmt.Printf("\n%# v\n", pretty.Formatter(entries[0])
 				}
 			}
 		}

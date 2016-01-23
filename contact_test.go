@@ -1,6 +1,7 @@
 package harvest
 
 import (
+	"github.com/kr/pretty"
 	"fmt"
 	"testing"
 	"os"
@@ -18,12 +19,12 @@ func TestContacts(t *testing.T) {
 	if err != nil {
 		fmt.Printf("\n%v\n", err)
 	} else {
-		fmt.Printf("%+v\n", contacts)
+		fmt.Printf("\n%# v\n", pretty.Formatter(contacts))
 		contact, err := apiClient.Contact.Find(contacts[0].Id)
 		if err != nil {
 			fmt.Printf("\n%v\n", err)
 		} else {
-			fmt.Printf("%v\n", contact)
+			fmt.Printf("\n%# v\n", pretty.Formatter(contact))
 		}
 	}
 }

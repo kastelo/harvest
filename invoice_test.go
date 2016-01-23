@@ -1,6 +1,7 @@
 package harvest
 
 import (
+	"github.com/kr/pretty"
 	"fmt"
 	"testing"
 	"os"
@@ -18,12 +19,12 @@ func TestInvoices(t *testing.T) {
 	if err != nil {
 		fmt.Printf("\n%v\n", err)
 	} else {
-		fmt.Printf("\n%+v\n", invoices)
+		fmt.Printf("\n%# v\n", pretty.Formatter(invoices))
 		invoice, err := apiClient.Invoice.Find(invoices[0].Id)
 		if err != nil {
 			fmt.Printf("\n%v\n", err)
 		} else {
-			fmt.Printf("\n%v\n", invoice)
+			fmt.Printf("\n%# v\n", pretty.Formatter(invoice))
 		}
 	}
 }
