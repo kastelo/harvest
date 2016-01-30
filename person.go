@@ -10,7 +10,7 @@ type PersonService struct {
 }
 
 type Person struct {
-	Id                           int
+	Id                           int		`json:"id"`
 	DefaultExpenseCategoryId     int
 	DefaultExpenseProjectId      int
 	DefaultTaskId                int
@@ -23,17 +23,17 @@ type Person struct {
 	OpensocialIdentifier         string
 	Telephone                    string		`json:"telephone"`
 	Timezone                     string		`json:"timezone"`
-	CostRate                     string
+	CostRate                     string		`json:"cost_rate"`
 	WeeklyDigestSentOn           string
-	Department                   string
-	IsContractor                 bool
-	IsAdmin                      bool
-	IsActive                     bool
-	HasAccessToAllFutureProjects bool
-	WantsNewsletter              bool
+	Department                   string		`json:"department"`
+	IsContractor                 bool		`json:"is_contractor"`
+	IsAdmin                      bool		`json:"is_admin"`
+	IsActive                     bool		`json:"is_active"`
+	HasAccessToAllFutureProjects bool		`json:"has_access_to_all_future_projects"`
+	WantsNewsletter              bool		`json:"wants_newsletter"`
 	WantsWeeklyDigest            bool
-	CreatedAt                    time.Time
-	UpdatedAt                    time.Time
+	CreatedAt                    time.Time	`json:"created_at"`
+	UpdatedAt                    time.Time	`json:"updated_at"`
 }
 
 type PersonResponse struct {

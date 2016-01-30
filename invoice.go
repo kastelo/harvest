@@ -30,7 +30,7 @@ type Invoice struct {
 	Tax                float32     `json:"tax"`
 	Tax2               float32     `json:"tax2"`
 	TaxAmount          float32     `json:"tax_amount"`
-	TaxAmount2         float32     `json:"tax_amount2"`
+	TaxAmount2         float32     `json:"tax2_amount"`
 	DiscountAmount     float32     `json:"discount_amount"`
 	Discount           float32     `json:"discount"`
 	RecurringInvoiceId int         `json:"recurring_invoice_id"`

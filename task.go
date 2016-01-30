@@ -9,12 +9,12 @@ type TaskService struct {
 type Task struct {
 	Id                int         `json:"id"`
 	Name              string      `json:"name"`
-	BillableByDefault bool        `json:"billable-by-default"`
+	BillableByDefault bool        `json:"billable_by_default"`
 	Deactivated       bool        `json:"deactivated"`
 	CreatedAt         HarvestDate `json:"created_at"`
 	UpdateAt          HarvestDate `json:"updated_at"`
-	DefaultHourlyRate float32     `json:"default-hourly-rate"`
-	IsDefault         bool        `json:"is-default"`
+	DefaultHourlyRate float32     `json:"default_hourly_rate"`
+	IsDefault         bool        `json:"is_default"`
 }
 
 type TaskResponse struct {
