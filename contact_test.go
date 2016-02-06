@@ -17,12 +17,12 @@ func TestContacts(t *testing.T) {
 
 	contacts, err := apiClient.Contact.List()
 	if err != nil {
-		fmt.Printf("\n%v\n", err)
+		t.Fatalf("\n%v\n", err)
 	} else {
 		t.Logf("\n%# v\n", pretty.Formatter(contacts))
 		contact, err := apiClient.Contact.Find(contacts[0].Id)
 		if err != nil {
-			fmt.Printf("\n%v\n", err)
+			t.Fatalf("\n%v\n", err)
 		} else {
 			t.Logf("\n%# v\n", pretty.Formatter(contact))
 		}

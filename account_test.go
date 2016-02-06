@@ -18,10 +18,7 @@ func TestAccounts(t *testing.T) {
 	account, err := apiClient.Account.Find()
 	if err != nil {
 		t.Fatalf("\n%v\n", err)
-		t.Fail()
 	} else {
 		t.Logf("\n%# v\n", pretty.Formatter(account))
-		//fmt.Printf("\n%# v\n", pretty.Formatter(account))
-
 	}
 }
