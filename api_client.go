@@ -34,6 +34,7 @@ type APIClient struct {
 	Entry           *EntryService
 }
 
+// newAPIClient instantiates a new http.Client and returns a new APIClient
 func newAPIClient(subdomain string, httpClient *http.Client) (c *APIClient) {
 	c = new(APIClient)
 	c.subdomain = subdomain

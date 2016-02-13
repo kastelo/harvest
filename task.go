@@ -21,6 +21,7 @@ type TaskResponse struct {
 	Task `json:"task"`
 }
 
+// List requests list of tasks and returns response
 func (c *TaskService) List() (tasks []TaskResponse, err error) {
 	resourceURL := "/tasks.json"
 	var resp []TaskResponse
@@ -34,6 +35,7 @@ func (c *TaskService) List() (tasks []TaskResponse, err error) {
 	return tasks, err
 }
 
+// Find requests task information for specified task and returns response
 func (c *TaskService) Find(taskID int) (task TaskResponse, err error) {
 	resourceURL := fmt.Sprintf("/tasks/%v.json", taskID)
 	var resp TaskResponse

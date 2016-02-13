@@ -39,6 +39,7 @@ type ProjectResponse struct {
 	Project `json:"project"`
 }
 
+// List requests list of projects and returns response
 func (c *ProjectService) List() (projects []ProjectResponse, err error) {
 	resourceURL := "/projects.json"
 	var resp []ProjectResponse
@@ -52,6 +53,7 @@ func (c *ProjectService) List() (projects []ProjectResponse, err error) {
 	return projects, err
 }
 
+// Find requests project information for specified project
 func (c *ProjectService) Find(projectID int) (project ProjectResponse, err error) {
 	resourceURL := fmt.Sprintf("/projects/%v.json", projectID)
 	var resp ProjectResponse

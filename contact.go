@@ -24,6 +24,7 @@ type ContactResponse struct {
 	Contact `json:"contact"`
 }
 
+// List requests list of contacts and returns response
 func (c *ContactService) List() (contacts []ContactResponse, err error) {
 	resourceURL := "/contacts.json"
 	var resp []ContactResponse
@@ -37,6 +38,7 @@ func (c *ContactService) List() (contacts []ContactResponse, err error) {
 	return contacts, err
 }
 
+// Find requests contact information for specified contact and returns repsonse
 func (c *ContactService) Find(contactID int) (contact ContactResponse, err error) {
 	resourceURL := fmt.Sprintf("/contacts/%v.json", contactID)
 	var resp ContactResponse

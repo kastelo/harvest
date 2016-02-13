@@ -44,6 +44,7 @@ type InvoiceResponse struct {
 	Invoice `json:"invoices"`
 }
 
+// List requests list of invoices and returns response
 func (i *InvoiceService) List() (invoices []InvoiceResponse, err error) {
 	resourceURL := "/invoices.json"
 	var resp []InvoiceResponse
@@ -57,6 +58,7 @@ func (i *InvoiceService) List() (invoices []InvoiceResponse, err error) {
 	return invoices, err
 }
 
+// Find requests invoice information for specified invoice and returns response
 func (i *InvoiceService) Find(invoiceID int) (invoice InvoiceResponse, err error) {
 	resourceURL := fmt.Sprintf("/invoices/%v.json", invoiceID)
 	var resp InvoiceResponse

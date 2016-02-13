@@ -23,6 +23,7 @@ type CategoryResponse struct {
 	ExpenseCategory `json:"expense_category"`
 }
 
+// List requests list of expense categories and returns response
 func (c *ExpenseCategoryService) List() (expenseCategories []CategoryResponse, err error) {
 	resourceURL := "/expense_categories.json"
 	var resp []CategoryResponse
@@ -36,6 +37,8 @@ func (c *ExpenseCategoryService) List() (expenseCategories []CategoryResponse, e
 	return expenseCategories, err
 }
 
+// Find requests expense category information for specified expense category
+// and returns response
 func (c *ExpenseCategoryService) Find(catId int) (expense CategoryResponse, err error) {
 	resourceURL := fmt.Sprintf("/expense_categories/%v.json", catId)
 	var resp CategoryResponse

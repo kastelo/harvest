@@ -40,6 +40,7 @@ type PersonResponse struct {
 	Person `json:"user"`
 }
 
+// List requests list of people and returns response
 func (c *PersonService) List() (people []PersonResponse, err error) {
 	resourceURL := "/people.json"
 	var resp []PersonResponse
@@ -53,6 +54,7 @@ func (c *PersonService) List() (people []PersonResponse, err error) {
 	return people, err
 }
 
+// Find requests people information for specified person and returns response
 func (c *PersonService) Find(personID int) (person PersonResponse, err error) {
 	resourceURL := fmt.Sprintf("/people/%v.json", personID)
 	var resp PersonResponse

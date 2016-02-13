@@ -42,6 +42,7 @@ func (c *EntryService) ListPerson(personID int, from time.Time, to time.Time) (e
 	return c.entryList("people", personID, from, to)
 }
 
+// entryList returns entries
 func (c *EntryService) entryList(resource string, projectID int, from time.Time, to time.Time) (entries []EntryResponse, err error) {
 	// TODO check that `to` does not precede `from`
 	from_format := from.Format("20060102")

@@ -31,6 +31,7 @@ type Account struct {
 	Person  Person  `json:"user"`
 }
 
+// Find requests user information for specified user and returns response
 func (a *AccountService) Find() (Account, error) {
 	resourceURL := "/account/who_am_i.json"
 	var account Account
