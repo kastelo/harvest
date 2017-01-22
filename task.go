@@ -22,26 +22,19 @@ type TaskResponse struct {
 }
 
 // List requests list of tasks and returns response
-func (c *TaskService) List() (tasks []TaskResponse, err error) {
+func (c *TaskService) List() ([]TaskResponse, error) {
 	resourceURL := "/tasks.json"
-	var resp []TaskResponse
-	err = c.list(resourceURL, &resp)
-	if err != nil {
-		return resp, err
+	var tasks []TaskResponse
+	if err := c.get(resourceURL, &tasks); err != nil {
+		return nil, err
 	}
-	for _, element := range resp {
-		tasks = append(tasks, element)
-	}
-	return tasks, err
+	return tasks, nil
 }
 
 // Find requests task information for specified task and returns response
-func (c *TaskService) Find(taskID int) (task TaskResponse, err error) {
+func (c *TaskService) Find(taskID int) (TaskResponse, error) {
 	resourceURL := fmt.Sprintf("/tasks/%v.json", taskID)
 	var resp TaskResponse
-	err = c.find(resourceURL, &resp)
-	if err != nil {
-		return
-	}
+	err := c.get(resourceURL, &resp)
 	return resp, err
 }

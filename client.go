@@ -29,22 +29,17 @@ type ClientResponse struct {
 // List requests list of clients and returns response
 func (c *ClientService) List() ([]ClientResponse, error) {
 	resourceURL := "/clients.json"
-	var resp []ClientResponse
 	var clients []ClientResponse
-	err := c.list(resourceURL, &resp)
-	if err != nil {
-		return resp, err
+	if err := c.get(resourceURL, &clients); err != nil {
+		return nil, err
 	}
-	for _, element := range resp {
-		clients = append(clients, element)
-	}
-	return clients, err
+	return clients, nil
 }
 
 // Find requests client information for specified client and returns response
 func (c *ClientService) Find(clientID int) (ClientResponse, error) {
 	resourceURL := fmt.Sprintf("/clients/%v.json", clientID)
 	var resp ClientResponse
-	err := c.find(resourceURL, &resp)
+	err := c.get(resourceURL, &resp)
 	return resp, err
 }

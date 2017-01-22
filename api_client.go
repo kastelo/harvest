@@ -5,11 +5,12 @@ package harvest
 
 import (
 	"fmt"
-	"golang.org/x/net/context"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"strings"
+
+	"golang.org/x/net/context"
 
 	"golang.org/x/oauth2"
 )
@@ -99,17 +100,16 @@ func (c *APIClient) GetJSON(path string) (jsonResponse []byte, err error) {
 	resourceURL := fmt.Sprintf("https://%v.harvestapp.com%v", c.subdomain, path)
 	request, err := http.NewRequest("GET", resourceURL, nil)
 	if err != nil {
-		return []byte(""), err
+		return nil, err
 	}
 
 	request.SetBasicAuth(c.username, c.password)
 	resp, err := c.httpClient.Do(request)
 
 	if err != nil {
-		return []byte(""), err
+		return nil, err
 	}
 
 	defer resp.Body.Close()
-	jsonResponse, err = ioutil.ReadAll(resp.Body)
-	return jsonResponse, err
+	return ioutil.ReadAll(resp.Body)
 }

@@ -40,23 +40,19 @@ type ProjectResponse struct {
 }
 
 // List requests list of projects and returns response
-func (c *ProjectService) List() (projects []ProjectResponse, err error) {
+func (c *ProjectService) List() ([]ProjectResponse, error) {
 	resourceURL := "/projects.json"
-	var resp []ProjectResponse
-	err = c.list(resourceURL, &resp)
-	if err != nil {
-		return resp, err
+	var projects []ProjectResponse
+	if err := c.get(resourceURL, &projects); err != nil {
+		return nil, err
 	}
-	for _, element := range resp {
-		projects = append(projects, element)
-	}
-	return projects, err
+	return projects, nil
 }
 
 // Find requests project information for specified project
-func (c *ProjectService) Find(projectID int) (project ProjectResponse, err error) {
+func (c *ProjectService) Find(projectID int) (ProjectResponse, error) {
 	resourceURL := fmt.Sprintf("/projects/%v.json", projectID)
 	var resp ProjectResponse
-	err = c.find(resourceURL, &resp)
+	err := c.get(resourceURL, &resp)
 	return resp, err
 }

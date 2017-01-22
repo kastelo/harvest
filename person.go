@@ -21,9 +21,9 @@ type Person struct {
 	Email                        string  `json:"email"`
 	IdentityUrl                  string
 	OpensocialIdentifier         string
-	Telephone                    string `json:"telephone"`
-	Timezone                     string `json:"timezone"`
-	CostRate                     string `json:"cost_rate"`
+	Telephone                    string  `json:"telephone"`
+	Timezone                     string  `json:"timezone"`
+	CostRate                     float32 `json:"cost_rate"`
 	WeeklyDigestSentOn           string
 	Department                   string `json:"department"`
 	IsContractor                 bool   `json:"is_contractor"`
@@ -41,23 +41,19 @@ type PersonResponse struct {
 }
 
 // List requests list of people and returns response
-func (c *PersonService) List() (people []PersonResponse, err error) {
+func (c *PersonService) List() ([]PersonResponse, error) {
 	resourceURL := "/people.json"
-	var resp []PersonResponse
-	err = c.list(resourceURL, &resp)
-	if err != nil {
-		return resp, err
+	var people []PersonResponse
+	if err := c.get(resourceURL, &people); err != nil {
+		return nil, err
 	}
-	for _, element := range resp {
-		people = append(people, element)
-	}
-	return people, err
+	return people, nil
 }
 
 // Find requests people information for specified person and returns response
-func (c *PersonService) Find(personID int) (person PersonResponse, err error) {
+func (c *PersonService) Find(personID int) (PersonResponse, error) {
 	resourceURL := fmt.Sprintf("/people/%v.json", personID)
 	var resp PersonResponse
-	err = c.find(resourceURL, &resp)
+	err := c.get(resourceURL, &resp)
 	return resp, err
 }

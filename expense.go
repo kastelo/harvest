@@ -24,24 +24,20 @@ type CategoryResponse struct {
 }
 
 // List requests list of expense categories and returns response
-func (c *ExpenseCategoryService) List() (expenseCategories []CategoryResponse, err error) {
+func (c *ExpenseCategoryService) List() ([]CategoryResponse, error) {
 	resourceURL := "/expense_categories.json"
-	var resp []CategoryResponse
-	err = c.list(resourceURL, &resp)
-	if err != nil {
-		return resp, err
+	var categories []CategoryResponse
+	if err := c.get(resourceURL, &categories); err != nil {
+		return nil, err
 	}
-	for _, element := range resp {
-		expenseCategories = append(expenseCategories, element)
-	}
-	return expenseCategories, err
+	return categories, nil
 }
 
 // Find requests expense category information for specified expense category
 // and returns response
-func (c *ExpenseCategoryService) Find(catID int) (expense CategoryResponse, err error) {
+func (c *ExpenseCategoryService) Find(catID int) (CategoryResponse, error) {
 	resourceURL := fmt.Sprintf("/expense_categories/%v.json", catID)
 	var resp CategoryResponse
-	err = c.find(resourceURL, &resp)
+	err := c.get(resourceURL, &resp)
 	return resp, err
 }

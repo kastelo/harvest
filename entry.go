@@ -33,29 +33,25 @@ type EntryResponse struct {
 }
 
 // Returns all entries associated with a project
-func (c *EntryService) ListProject(projectID int, from time.Time, to time.Time) (entries []EntryResponse, err error) {
+func (c *EntryService) ListProject(projectID int, from time.Time, to time.Time) ([]EntryResponse, error) {
 	return c.entryList("projects", projectID, from, to)
 }
 
 // Returns all entries associated with a person
-func (c *EntryService) ListPerson(personID int, from time.Time, to time.Time) (entries []EntryResponse, err error) {
+func (c *EntryService) ListPerson(personID int, from time.Time, to time.Time) ([]EntryResponse, error) {
 	return c.entryList("people", personID, from, to)
 }
 
 // entryList returns entries
-func (c *EntryService) entryList(resource string, projectID int, from time.Time, to time.Time) (entries []EntryResponse, err error) {
+func (c *EntryService) entryList(resource string, projectID int, from time.Time, to time.Time) ([]EntryResponse, error) {
 	// TODO check that `to` does not precede `from`
 	fromStr := from.Format("20060102")
 	toStr := to.Format("20060102")
-	var resp []EntryResponse
+	var entries []EntryResponse
 	resourceURL := fmt.Sprintf("/%s/%v/entries.json?from=%v&to=%v", resource, projectID, fromStr, toStr)
 
-	err = c.list(resourceURL, &resp)
-	if err != nil {
-		return resp, err
+	if err := c.get(resourceURL, &entries); err != nil {
+		return nil, err
 	}
-	for _, element := range resp {
-		entries = append(entries, element)
-	}
-	return entries, err
+	return entries, nil
 }
