@@ -17,14 +17,14 @@ type Entry struct {
 	ProjectID int       `json:"project_id"`
 	Hours     float32   `json:"hours"`
 	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 	SpentAt   Date      `json:"spent_at"`
 	// `timer_started_at` is in Harvest's JSON response, but in entries examined
 	// always set to null, and is creating JSON marshalling problems, so we're
 	// ignoring it for now.
 	//TimerStartedAt time.Time   `json:"timer_started_at"`
 	IsBilled bool   `json:"is_billed"`
-	IsClosed bool   `json:"created_at"`
+	IsClosed bool   `json:"is_closed"`
 	Notes    string `json:"notes"`
 }
 
