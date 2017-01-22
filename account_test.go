@@ -1,10 +1,10 @@
 package harvest
 
 import (
-	"github.com/kr/pretty"
-	"testing"
-	"os"
 	"fmt"
+	"github.com/kr/pretty"
+	"os"
+	"testing"
 )
 
 func TestAccounts(t *testing.T) {
@@ -13,7 +13,7 @@ func TestAccounts(t *testing.T) {
 		os.Getenv("HARVEST_PASSWORD"),
 		os.Getenv("HARVEST_DOMAIN"))
 
-	fmt.Printf("\n%v", "account_test:")		//Used for debugging
+	fmt.Printf("\n%v", "account_test:") //Used for debugging
 
 	account, err := apiClient.Account.Find()
 	if err != nil {

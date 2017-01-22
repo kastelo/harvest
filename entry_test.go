@@ -1,11 +1,11 @@
 package harvest
 
 import (
-	"github.com/kr/pretty"
 	"fmt"
-	"time"
-	"testing"
+	"github.com/kr/pretty"
 	"os"
+	"testing"
+	"time"
 )
 
 func TestProjectEntries(t *testing.T) {
@@ -14,7 +14,7 @@ func TestProjectEntries(t *testing.T) {
 		os.Getenv("HARVEST_PASSWORD"),
 		os.Getenv("HARVEST_DOMAIN"))
 
-	fmt.Printf("\n%v", "entry_test:")		//Used for debugging
+	fmt.Printf("\n%v", "entry_test:") //Used for debugging
 
 	//First argument defines format
 	//Date format: yyyy-mm-dd
@@ -48,7 +48,7 @@ func TestPersonEntries(t *testing.T) {
 	from_time, _ := time.Parse("2006-01-02", "2016-01-01")
 	to_time, _ := time.Parse("2006-01-02", "2016-01-23")
 
-  people, err := apiClient.People.List()
+	people, err := apiClient.People.List()
 	if err != nil {
 		t.Fatalf("\n%v\n", err)
 	} else {

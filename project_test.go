@@ -1,10 +1,10 @@
 package harvest
 
 import (
-	"github.com/kr/pretty"
 	"fmt"
-	"testing"
+	"github.com/kr/pretty"
 	"os"
+	"testing"
 )
 
 func TestProjects(t *testing.T) {
@@ -13,7 +13,7 @@ func TestProjects(t *testing.T) {
 		os.Getenv("HARVEST_PASSWORD"),
 		os.Getenv("HARVEST_DOMAIN"))
 
-	fmt.Printf("\n%v", "project_test:")		//Used for debugging
+	fmt.Printf("\n%v", "project_test:") //Used for debugging
 
 	projects, err := apiClient.Project.List()
 	if err != nil {

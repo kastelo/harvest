@@ -5,9 +5,9 @@ package harvest
 
 import (
 	"fmt"
+	"golang.org/x/net/context"
 	"io/ioutil"
 	"net/http"
-	"golang.org/x/net/context"
 	"os"
 	"strings"
 
