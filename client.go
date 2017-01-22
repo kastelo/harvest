@@ -13,8 +13,8 @@ type Client struct {
 	Name                    string    `json:"name"`
 	Currency                string    `json:"currency"`
 	Active                  bool      `json:"active"`
-	Id                      int       `json:"id"`
-	HighriseId              int       `json:"highrise_id"`
+	ID                      int       `json:"id"`
+	HighriseID              int       `json:"highrise_id"`
 	CreatedAt               time.Time `json:"created_at"`
 	UpdatedAt               time.Time `json:"updated_at"`
 	Details                 string    `json:"details"`

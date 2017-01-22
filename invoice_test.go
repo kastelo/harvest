@@ -20,7 +20,7 @@ func TestInvoices(t *testing.T) {
 		t.Fatalf("\n%v\n", err)
 	} else {
 		t.Logf("\n%# v\n", pretty.Formatter(invoices))
-		invoice, err := apiClient.Invoice.Find(invoices[0].Id)
+		invoice, err := apiClient.Invoice.Find(invoices[0].ID)
 		if err != nil {
 			t.Fatalf("\n%v\n", err)
 		} else {

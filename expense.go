@@ -10,7 +10,7 @@ type ExpenseCategoryService struct {
 }
 
 type ExpenseCategory struct {
-	Id          int       `json:"id"`
+	ID          int       `json:"id"`
 	Name        string    `json:"name"`
 	UnitName    string    `json:"unit_name"`
 	UnitPrice   float32   `json:"unit_price"`
@@ -39,8 +39,8 @@ func (c *ExpenseCategoryService) List() (expenseCategories []CategoryResponse, e
 
 // Find requests expense category information for specified expense category
 // and returns response
-func (c *ExpenseCategoryService) Find(catId int) (expense CategoryResponse, err error) {
-	resourceURL := fmt.Sprintf("/expense_categories/%v.json", catId)
+func (c *ExpenseCategoryService) Find(catID int) (expense CategoryResponse, err error) {
+	resourceURL := fmt.Sprintf("/expense_categories/%v.json", catID)
 	var resp CategoryResponse
 	err = c.find(resourceURL, &resp)
 	return resp, err

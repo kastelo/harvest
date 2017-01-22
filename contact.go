@@ -7,8 +7,8 @@ type ContactService struct {
 }
 
 type Contact struct {
-	Id          int         `json:"id"`
-	ClientId    int         `json:"client_id"`
+	ID          int         `json:"id"`
+	ClientID    int         `json:"client_id"`
 	FirstName   string      `json:"first_name"`
 	LastName    string      `json:"last_name"`
 	Title       string      `json:"title"`

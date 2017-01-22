@@ -20,7 +20,7 @@ func TestProjects(t *testing.T) {
 		t.Fatalf("\n%v\n", err)
 	} else {
 		t.Logf("\n%# v\n", pretty.Formatter(projects))
-		project, err := apiClient.Project.Find(projects[0].Id)
+		project, err := apiClient.Project.Find(projects[0].ID)
 		if err != nil {
 			t.Fatalf("\n%v\n", err)
 		} else {

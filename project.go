@@ -7,8 +7,8 @@ type ProjectService struct {
 }
 
 type Project struct {
-	Id                               int         `json:"id"`
-	ClientId                         int         `json:"client_id"`
+	ID                               int         `json:"id"`
+	ClientID                         int         `json:"client_id"`
 	Name                             string      `json:"name"`
 	Code                             string      `json:"code"`
 	Notes                            string      `json:"notes"`

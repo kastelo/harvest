@@ -20,7 +20,7 @@ func TestPeople(t *testing.T) {
 		t.Fatalf("\n%v\n", err)
 	} else {
 		t.Logf("\n%# v\n\n\n", pretty.Formatter(people))
-		person, err := apiClient.People.Find(people[0].Id)
+		person, err := apiClient.People.Find(people[0].ID)
 		if err != nil {
 			t.Fatalf("\n%v\n", err)
 		} else {

@@ -20,7 +20,7 @@ func TestTasks(t *testing.T) {
 		t.Fatalf("\n%v\n", err)
 	} else {
 		t.Logf("\n%# v\n", pretty.Formatter(tasks))
-		task, err := apiClient.Task.Find(tasks[0].Id)
+		task, err := apiClient.Task.Find(tasks[0].ID)
 		if err != nil {
 			t.Fatalf("\n%v\n", err)
 		} else {

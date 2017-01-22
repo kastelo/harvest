@@ -7,7 +7,7 @@ type TaskService struct {
 }
 
 type Task struct {
-	Id                int         `json:"id"`
+	ID                int         `json:"id"`
 	Name              string      `json:"name"`
 	BillableByDefault bool        `json:"billable_by_default"`
 	Deactivated       bool        `json:"deactivated"`

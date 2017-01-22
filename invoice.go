@@ -10,18 +10,18 @@ type InvoiceService struct {
 }
 
 type Invoice struct {
-	Id                 int         `json:"id"`
+	ID                 int         `json:"id"`
 	Amount             float32     `json:"amount"`
 	DueAmount          float32     `json:"due_amount"`
 	DueAt              HarvestDate `json:"due_at"`
 	DueAtHumanFormat   string      `json:"due_at_human_format"`
 	PeriodEnd          HarvestDate `json:"period_end"`
 	PeriodStart        HarvestDate `json:"period_start"`
-	ClientId           int         `json:"client_id"`
+	ClientID           int         `json:"client_id"`
 	Subject            string      `json:"subject"`
 	Currency           string      `json:"currency"`
 	IssuedAt           HarvestDate `json:"issued_at"`
-	CreatedById        int         `json:"created_by_id"`
+	CreatedByID        int         `json:"created_by_id"`
 	Notes              string      `json:"notes"`
 	Number             string      `json:"number"`
 	PurchaseOrder      string      `json:"purchase_order"`
@@ -33,9 +33,9 @@ type Invoice struct {
 	TaxAmount2         float32     `json:"tax2_amount"`
 	DiscountAmount     float32     `json:"discount_amount"`
 	Discount           float32     `json:"discount"`
-	RecurringInvoiceId int         `json:"recurring_invoice_id"`
-	EstimateId         int         `json:"estimate_id"`
-	RetainerId         int         `json:"retainer_id"`
+	RecurringInvoiceID int         `json:"recurring_invoice_id"`
+	EstimateID         int         `json:"estimate_id"`
+	RetainerID         int         `json:"retainer_id"`
 	UpdatedAt          time.Time   `json:"updated_at"`
 	CreatedAt          time.Time   `json:"created_at"`
 }

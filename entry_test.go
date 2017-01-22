@@ -26,7 +26,7 @@ func TestProjectEntries(t *testing.T) {
 		t.Fatalf("\n%v\n", err)
 	} else {
 		for _, project := range projects {
-			entries, err := apiClient.Entry.ListProject(project.Id, from_time, to_time)
+			entries, err := apiClient.Entry.ListProject(project.ID, from_time, to_time)
 			if err != nil {
 				t.Fatalf("Error: %v", err)
 			} else {
@@ -53,7 +53,7 @@ func TestPersonEntries(t *testing.T) {
 		t.Fatalf("\n%v\n", err)
 	} else {
 		for _, person := range people {
-			entries, err := apiClient.Entry.ListPerson(person.Id, from_time, to_time)
+			entries, err := apiClient.Entry.ListPerson(person.ID, from_time, to_time)
 			if err != nil {
 				t.Fatalf("Error: %v", err)
 			} else {

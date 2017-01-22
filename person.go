@@ -10,11 +10,11 @@ type PersonService struct {
 }
 
 type Person struct {
-	Id                           int `json:"id"`
-	DefaultExpenseCategoryId     int
-	DefaultExpenseProjectId      int
-	DefaultTaskId                int
-	DefaultTimeProjectId         int
+	ID                           int `json:"id"`
+	DefaultExpenseCategoryID     int
+	DefaultExpenseProjectID      int
+	DefaultTaskID                int
+	DefaultTimeProjectID         int
 	DefaultHourlyRate            float32 `json:"default_hourly_rate"`
 	FirstName                    string  `json:"first_name"`
 	LastName                     string  `json:"last_name"`

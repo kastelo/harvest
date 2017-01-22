@@ -20,7 +20,7 @@ func TestExpenseCategories(t *testing.T) {
 		t.Fatalf("\n%v\n", err)
 	} else {
 		t.Logf("\n%# v\n", pretty.Formatter(expenseCategories))
-		category, err := apiClient.ExpenseCategory.Find(expenseCategories[0].Id)
+		category, err := apiClient.ExpenseCategory.Find(expenseCategories[0].ID)
 		if err != nil {
 			t.Fatalf("\n%v\n", err)
 		} else {

@@ -10,11 +10,11 @@ type EntryService struct {
 }
 
 type Entry struct {
-	Id        int         `json:"id"`
-	UserId    int         `json:"user_id"`
-	TaskId    int         `json:"task_id"`
-	InoviceId int         `json:"invoice_id"`
-	ProjectId int         `json:"project_id"`
+	ID        int         `json:"id"`
+	UserID    int         `json:"user_id"`
+	TaskID    int         `json:"task_id"`
+	InoviceID int         `json:"invoice_id"`
+	ProjectID int         `json:"project_id"`
 	Hours     float32     `json:"hours"`
 	CreatedAt time.Time   `json:"created_at"`
 	UpdatedAt time.Time   `json:"created_at"`
