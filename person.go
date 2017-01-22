@@ -19,7 +19,7 @@ type Person struct {
 	FirstName                    string  `json:"first_name"`
 	LastName                     string  `json:"last_name"`
 	Email                        string  `json:"email"`
-	IdentityUrl                  string
+	IdentityURL                  string
 	OpensocialIdentifier         string
 	Telephone                    string  `json:"telephone"`
 	Timezone                     string  `json:"timezone"`
