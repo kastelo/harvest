@@ -7,17 +7,17 @@ type ContactService struct {
 }
 
 type Contact struct {
-	ID          int         `json:"id"`
-	ClientID    int         `json:"client_id"`
-	FirstName   string      `json:"first_name"`
-	LastName    string      `json:"last_name"`
-	Title       string      `json:"title"`
-	Email       string      `json:"email"`
-	MobilePhone string      `json:"phone_mobile"`
-	OfficePhone string      `json:"phone_office"`
-	Fax         string      `json:"fax"`
-	CreatedAt   HarvestDate `json:"created_at"`
-	UpdatedAt   HarvestDate `json:"updated_at"`
+	ID          int    `json:"id"`
+	ClientID    int    `json:"client_id"`
+	FirstName   string `json:"first_name"`
+	LastName    string `json:"last_name"`
+	Title       string `json:"title"`
+	Email       string `json:"email"`
+	MobilePhone string `json:"phone_mobile"`
+	OfficePhone string `json:"phone_office"`
+	Fax         string `json:"fax"`
+	CreatedAt   Date   `json:"created_at"`
+	UpdatedAt   Date   `json:"updated_at"`
 }
 
 type ContactResponse struct {

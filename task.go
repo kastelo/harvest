@@ -7,14 +7,14 @@ type TaskService struct {
 }
 
 type Task struct {
-	ID                int         `json:"id"`
-	Name              string      `json:"name"`
-	BillableByDefault bool        `json:"billable_by_default"`
-	Deactivated       bool        `json:"deactivated"`
-	CreatedAt         HarvestDate `json:"created_at"`
-	UpdateAt          HarvestDate `json:"updated_at"`
-	DefaultHourlyRate float32     `json:"default_hourly_rate"`
-	IsDefault         bool        `json:"is_default"`
+	ID                int     `json:"id"`
+	Name              string  `json:"name"`
+	BillableByDefault bool    `json:"billable_by_default"`
+	Deactivated       bool    `json:"deactivated"`
+	CreatedAt         Date    `json:"created_at"`
+	UpdateAt          Date    `json:"updated_at"`
+	DefaultHourlyRate float32 `json:"default_hourly_rate"`
+	IsDefault         bool    `json:"is_default"`
 }
 
 type TaskResponse struct {

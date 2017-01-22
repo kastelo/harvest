@@ -2,10 +2,11 @@ package harvest
 
 import (
 	"fmt"
-	"github.com/kr/pretty"
 	"os"
 	"testing"
 	"time"
+
+	"github.com/kr/pretty"
 )
 
 func TestProjectEntries(t *testing.T) {
@@ -18,15 +19,15 @@ func TestProjectEntries(t *testing.T) {
 
 	//First argument defines format
 	//Date format: yyyy-mm-dd
-	from_time, _ := time.Parse("2006-01-02", "2016-01-01")
-	to_time, _ := time.Parse("2006-01-02", "2016-01-23")
+	fromTime, _ := time.Parse("2006-01-02", "2016-01-01")
+	toTime, _ := time.Parse("2006-01-02", "2016-01-23")
 
 	projects, err := apiClient.Project.List()
 	if err != nil {
 		t.Fatalf("\n%v\n", err)
 	} else {
 		for _, project := range projects {
-			entries, err := apiClient.Entry.ListProject(project.ID, from_time, to_time)
+			entries, err := apiClient.Entry.ListProject(project.ID, fromTime, toTime)
 			if err != nil {
 				t.Fatalf("Error: %v", err)
 			} else {

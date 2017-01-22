@@ -10,15 +10,15 @@ type EntryService struct {
 }
 
 type Entry struct {
-	ID        int         `json:"id"`
-	UserID    int         `json:"user_id"`
-	TaskID    int         `json:"task_id"`
-	InvoiceID int         `json:"invoice_id"`
-	ProjectID int         `json:"project_id"`
-	Hours     float32     `json:"hours"`
-	CreatedAt time.Time   `json:"created_at"`
-	UpdatedAt time.Time   `json:"created_at"`
-	SpentAt   HarvestDate `json:"spent_at"`
+	ID        int       `json:"id"`
+	UserID    int       `json:"user_id"`
+	TaskID    int       `json:"task_id"`
+	InvoiceID int       `json:"invoice_id"`
+	ProjectID int       `json:"project_id"`
+	Hours     float32   `json:"hours"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"created_at"`
+	SpentAt   Date      `json:"spent_at"`
 	// `timer_started_at` is in Harvest's JSON response, but in entries examined
 	// always set to null, and is creating JSON marshalling problems, so we're
 	// ignoring it for now.
@@ -45,10 +45,10 @@ func (c *EntryService) ListPerson(personID int, from time.Time, to time.Time) (e
 // entryList returns entries
 func (c *EntryService) entryList(resource string, projectID int, from time.Time, to time.Time) (entries []EntryResponse, err error) {
 	// TODO check that `to` does not precede `from`
-	from_format := from.Format("20060102")
-	to_format := to.Format("20060102")
+	fromStr := from.Format("20060102")
+	toStr := to.Format("20060102")
 	var resp []EntryResponse
-	resourceURL := fmt.Sprintf("/%s/%v/entries.json?from=%v&to=%v", resource, projectID, from_format, to_format)
+	resourceURL := fmt.Sprintf("/%s/%v/entries.json?from=%v&to=%v", resource, projectID, fromStr, toStr)
 
 	err = c.list(resourceURL, &resp)
 	if err != nil {
