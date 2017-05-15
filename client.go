@@ -12,6 +12,7 @@ type ClientService struct {
 type Client struct {
 	Name                    string    `json:"name"`
 	Currency                string    `json:"currency"`
+	CurrencySymbol          string    `json:"currency_symbol"`
 	Active                  bool      `json:"active"`
 	ID                      int       `json:"id"`
 	HighriseID              int       `json:"highrise_id"`

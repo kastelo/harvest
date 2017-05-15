@@ -11,8 +11,8 @@ type InvoiceService struct {
 
 type Invoice struct {
 	ID                 int       `json:"id"`
-	Amount             float32   `json:"amount"`
-	DueAmount          float32   `json:"due_amount"`
+	Amount             float64   `json:"amount"`
+	DueAmount          float64   `json:"due_amount"`
 	DueAt              Date      `json:"due_at"`
 	DueAtHumanFormat   string    `json:"due_at_human_format"`
 	PeriodEnd          Date      `json:"period_end"`
@@ -27,12 +27,12 @@ type Invoice struct {
 	PurchaseOrder      string    `json:"purchase_order"`
 	ClientKey          string    `json:"client_key"`
 	State              string    `json:"state"`
-	Tax                float32   `json:"tax"`
-	Tax2               float32   `json:"tax2"`
-	TaxAmount          float32   `json:"tax_amount"`
-	TaxAmount2         float32   `json:"tax2_amount"`
-	DiscountAmount     float32   `json:"discount_amount"`
-	Discount           float32   `json:"discount"`
+	Tax                float64   `json:"tax"`
+	Tax2               float64   `json:"tax2"`
+	TaxAmount          float64   `json:"tax_amount"`
+	TaxAmount2         float64   `json:"tax2_amount"`
+	DiscountAmount     float64   `json:"discount_amount"`
+	Discount           float64   `json:"discount"`
 	RecurringInvoiceID int       `json:"recurring_invoice_id"`
 	EstimateID         int       `json:"estimate_id"`
 	RetainerID         int       `json:"retainer_id"`

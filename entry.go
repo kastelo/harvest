@@ -15,7 +15,7 @@ type Entry struct {
 	TaskID    int       `json:"task_id"`
 	InvoiceID int       `json:"invoice_id"`
 	ProjectID int       `json:"project_id"`
-	Hours     float32   `json:"hours"`
+	Hours     float64   `json:"hours"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 	SpentAt   Date      `json:"spent_at"`

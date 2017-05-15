@@ -15,7 +15,7 @@ type Person struct {
 	DefaultExpenseProjectID      int
 	DefaultTaskID                int
 	DefaultTimeProjectID         int
-	DefaultHourlyRate            float32 `json:"default_hourly_rate"`
+	DefaultHourlyRate            float64 `json:"default_hourly_rate"`
 	FirstName                    string  `json:"first_name"`
 	LastName                     string  `json:"last_name"`
 	Email                        string  `json:"email"`
@@ -23,7 +23,7 @@ type Person struct {
 	OpensocialIdentifier         string
 	Telephone                    string  `json:"telephone"`
 	Timezone                     string  `json:"timezone"`
-	CostRate                     float32 `json:"cost_rate"`
+	CostRate                     float64 `json:"cost_rate"`
 	WeeklyDigestSentOn           string
 	Department                   string `json:"department"`
 	IsContractor                 bool   `json:"is_contractor"`

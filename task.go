@@ -13,7 +13,7 @@ type Task struct {
 	Deactivated       bool    `json:"deactivated"`
 	CreatedAt         Date    `json:"created_at"`
 	UpdateAt          Date    `json:"updated_at"`
-	DefaultHourlyRate float32 `json:"default_hourly_rate"`
+	DefaultHourlyRate float64 `json:"default_hourly_rate"`
 	IsDefault         bool    `json:"is_default"`
 }
 

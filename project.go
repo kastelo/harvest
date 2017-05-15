@@ -18,11 +18,11 @@ type Project struct {
 	CostBudgetIncludeExpenses        bool    `json:"cost_budget_include_expenses"`
 	Billable                         bool    `json:"billable"`
 	ShowBudgetToAll                  bool    `json:"show_budget_to_all"`
-	CostBudget                       float32 `json:"cost_budget"`
-	HourlyRate                       float32 `json:"hourly_rate"`
-	Budget                           float32 `json:"budget"`
-	NotifyWhenOverBudget             float32 `json:"notify_when_overbudget"`
-	OverBudgetNotificationPercentage float32 `json:"over_budget_notification_percentage"`
+	CostBudget                       float64 `json:"cost_budget"`
+	HourlyRate                       float64 `json:"hourly_rate"`
+	Budget                           float64 `json:"budget"`
+	NotifyWhenOverBudget             float64 `json:"notify_when_overbudget"`
+	OverBudgetNotificationPercentage float64 `json:"over_budget_notification_percentage"`
 	OverBudgetNotifiedAt             Date    `json:"over_budget_notified_at"`
 	CreatedAt                        Date    `json:"created_at"`
 	UpdateAt                         Date    `json:"updated_at"`
@@ -30,7 +30,7 @@ type Project struct {
 	HintLatestRecordAt               Date    `json:"hint_latest_record_at"`
 	StartsOn                         Date    `json:"starts_on"`
 	EndsOn                           Date    `json:"ends_on"`
-	Estimate                         float32 `json:"estimate"`
+	Estimate                         float64 `json:"estimate"`
 	EstimateBy                       string  `json:"estimate_by"`
 }
 
