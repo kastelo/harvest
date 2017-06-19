@@ -42,6 +42,7 @@ type APIClient struct {
 	Expense         *ExpenseService
 	ExpenseCategory *ExpenseCategoryService
 	Entry           *EntryService
+	Payment         *PaymentService
 }
 
 type cacheEntry struct {
@@ -73,6 +74,7 @@ func newAPIClient(subdomain string, httpClient *http.Client, cacheInterval time.
 	c.Expense = &ExpenseService{Service{c}}
 	c.ExpenseCategory = &ExpenseCategoryService{Service{c}}
 	c.Entry = &EntryService{Service{c}}
+	c.Payment = &PaymentService{Service{c}}
 	return c
 }
 

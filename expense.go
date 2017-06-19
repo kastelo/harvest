@@ -44,7 +44,7 @@ func (c *ExpenseService) Find(expID int) (ExpenseResponse, error) {
 }
 
 func (c *ExpenseService) ForProject(projID int, from, to time.Time) ([]ExpenseResponse, error) {
-	resourceURL := fmt.Sprintf("/projects/%d/expenses?from=%s&to=%s", projID, from.Format("20060102"), to.Format("20060102"))
+	resourceURL := fmt.Sprintf("/projects/%d/expenses.json?from=%s&to=%s", projID, from.Format("20060102"), to.Format("20060102"))
 	var expenses []ExpenseResponse
 	if err := c.get(resourceURL, &expenses); err != nil {
 		return nil, err
