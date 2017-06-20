@@ -12,8 +12,6 @@ import (
 	"sync"
 	"time"
 
-	"golang.org/x/net/context"
-	"golang.org/x/oauth2"
 	"golang.org/x/sync/singleflight"
 )
 
@@ -107,17 +105,6 @@ func NewCachingAPIClientWithBasicAuth(username, password, subdomain string, cach
 	c = newAPIClient(subdomain, nil, cacheInterval)
 	c.username = username
 	c.password = password
-	return c
-}
-
-// NewAPIClientWithAuthToken instantiates a new http.Client and returns a new
-// APIClient using an OAuth token
-func NewAPIClientWithAuthToken(token, subdomain string) (c *APIClient) {
-	client := oauth2.NewClient(
-		context.Background(),
-		oauth2.StaticTokenSource(
-			&oauth2.Token{AccessToken: token}))
-	c = newAPIClient(subdomain, client, 0)
 	return c
 }
 
