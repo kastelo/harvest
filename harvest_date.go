@@ -2,6 +2,7 @@ package harvest
 
 import (
 	"encoding/json"
+	"fmt"
 	"regexp"
 	"strings"
 	"time"
@@ -22,4 +23,9 @@ func (harvestDate *Date) UnmarshalJSON(input []byte) (err error) {
 		err = json.Unmarshal(input, &harvestDate.Time)
 	}
 	return err
+}
+
+func (harvestDate Date) MarshalJSON() ([]byte, error) {
+	str := fmt.Sprintf(`"%s"`, harvestDate.Time.Format("2006-01-02"))
+	return []byte(str), nil
 }

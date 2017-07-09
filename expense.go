@@ -51,3 +51,7 @@ func (c *ExpenseService) ForProject(projID int, from, to time.Time) ([]ExpenseRe
 	}
 	return expenses, nil
 }
+
+func (c *ExpenseService) Update(e Expense) error {
+	return c.Service.post("/expenses.json", ExpenseResponse{e})
+}

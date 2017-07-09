@@ -16,3 +16,7 @@ func (service Service) get(resourceURL string, unmarshalContainer interface{}) (
 	}
 	return json.Unmarshal(contents, unmarshalContainer)
 }
+
+func (service Service) post(resourceURL string, v interface{}) (err error) {
+	return service.apiClient.PostJSON(resourceURL, v)
+}

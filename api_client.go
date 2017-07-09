@@ -4,6 +4,9 @@ Package harvest provides data structures and a wrapper for the Harvest API
 package harvest
 
 import (
+	"bytes"
+	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -142,7 +145,7 @@ func (c *APIClient) GetJSON(path string) (jsonResponse []byte, err error) {
 
 func (c *APIClient) uncachedGetJSON(path string) (jsonResponse []byte, err error) {
 	resourceURL := fmt.Sprintf("https://%v.harvestapp.com%v", c.subdomain, path)
-	request, err := http.NewRequest("GET", resourceURL, nil)
+	request, err := http.NewRequest(http.MethodGet, resourceURL, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -156,4 +159,35 @@ func (c *APIClient) uncachedGetJSON(path string) (jsonResponse []byte, err error
 
 	defer resp.Body.Close()
 	return ioutil.ReadAll(resp.Body)
+}
+
+func (c *APIClient) PostJSON(path string, v interface{}) error {
+	bs, err := json.Marshal(v)
+	if err != nil {
+		return err
+	}
+
+	r := bytes.NewReader(bs)
+	resourceURL := fmt.Sprintf("https://%v.harvestapp.com%v", c.subdomain, path)
+	request, err := http.NewRequest(http.MethodPost, resourceURL, r)
+	if err != nil {
+		return err
+	}
+
+	request.Header.Set("Content-Type", "application/json")
+	request.SetBasicAuth(c.username, c.password)
+	resp, err := c.httpClient.Do(request)
+
+	if err != nil {
+		return err
+	}
+
+	ioutil.ReadAll(resp.Body)
+	resp.Body.Close()
+
+	if resp.StatusCode != http.StatusCreated {
+		return errors.New(resp.Status)
+	}
+
+	return nil
 }
