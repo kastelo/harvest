@@ -32,6 +32,8 @@ type Project struct {
 	EndsOn                           Date    `json:"ends_on"`
 	Estimate                         float64 `json:"estimate"`
 	EstimateBy                       string  `json:"estimate_by"`
+	IsFixedFee                       bool    `json:"is_fixed_fee"`
+	Fee                              float64 `json:"fee"`
 }
 
 // Wrapper for simple unmarshalling of JSON data
