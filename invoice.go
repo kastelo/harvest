@@ -1,7 +1,9 @@
 package harvest
 
 import (
+	"encoding/csv"
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -38,6 +40,7 @@ type Invoice struct {
 	RetainerID         int       `json:"retainer_id"`
 	UpdatedAt          time.Time `json:"updated_at"`
 	CreatedAt          time.Time `json:"created_at"`
+	CSVLineItems       string    `json:"csv_line_items"`
 }
 
 type InvoiceResponse struct {
@@ -60,4 +63,23 @@ func (i *InvoiceService) Find(invoiceID int) (InvoiceResponse, error) {
 	var resp InvoiceResponse
 	err := i.get(resourceURL, &resp)
 	return resp, err
+}
+
+func (i *Invoice) LineItems() []map[string]string {
+	cr := csv.NewReader(strings.NewReader(i.CSVLineItems))
+	lines, err := cr.ReadAll()
+	if err != nil || len(lines) < 2 {
+		return nil
+	}
+
+	fieldNames := lines[0]
+	var res []map[string]string
+	for _, line := range lines[1:] {
+		m := make(map[string]string)
+		for i, k := range fieldNames {
+			m[k] = line[i]
+		}
+		res = append(res, m)
+	}
+	return res
 }
