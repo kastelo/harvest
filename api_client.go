@@ -152,13 +152,21 @@ func (c *APIClient) uncachedGetJSON(path string) (jsonResponse []byte, err error
 
 	request.SetBasicAuth(c.username, c.password)
 	resp, err := c.httpClient.Do(request)
-
 	if err != nil {
 		return nil, err
 	}
-
 	defer resp.Body.Close()
-	return ioutil.ReadAll(resp.Body)
+
+	bs, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return bs, err
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		return bs, errors.New(resp.Status)
+	}
+
+	return bs, nil
 }
 
 func (c *APIClient) PostJSON(path string, v interface{}) error {
@@ -177,7 +185,6 @@ func (c *APIClient) PostJSON(path string, v interface{}) error {
 	request.Header.Set("Content-Type", "application/json")
 	request.SetBasicAuth(c.username, c.password)
 	resp, err := c.httpClient.Do(request)
-
 	if err != nil {
 		return err
 	}
