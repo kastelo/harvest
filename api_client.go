@@ -170,6 +170,14 @@ func (c *APIClient) uncachedGetJSON(path string) (jsonResponse []byte, err error
 }
 
 func (c *APIClient) PostJSON(path string, v interface{}) error {
+	return c.doJSON(http.MethodPost, path, v)
+}
+
+func (c *APIClient) PutJSON(path string, v interface{}) error {
+	return c.doJSON(http.MethodPut, path, v)
+}
+
+func (c *APIClient) doJSON(method string, path string, v interface{}) error {
 	bs, err := json.Marshal(v)
 	if err != nil {
 		return err
@@ -177,7 +185,7 @@ func (c *APIClient) PostJSON(path string, v interface{}) error {
 
 	r := bytes.NewReader(bs)
 	resourceURL := fmt.Sprintf("https://%v.harvestapp.com%v", c.subdomain, path)
-	request, err := http.NewRequest(http.MethodPost, resourceURL, r)
+	request, err := http.NewRequest(method, resourceURL, r)
 	if err != nil {
 		return err
 	}
@@ -192,7 +200,7 @@ func (c *APIClient) PostJSON(path string, v interface{}) error {
 	ioutil.ReadAll(resp.Body)
 	resp.Body.Close()
 
-	if resp.StatusCode != http.StatusCreated {
+	if resp.StatusCode != http.StatusCreated && resp.StatusCode != http.StatusOK {
 		return errors.New(resp.Status)
 	}
 
