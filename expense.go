@@ -18,6 +18,7 @@ type Expense struct {
 	ExpenseCategoryID int     `json:"expense_category_id"`
 	Billable          bool    `json:"billable"`
 	SpentAt           Date    `json:"spent_at"`
+	IsLocked          bool    `json:"is_locked"`
 }
 
 type ExpenseResponse struct {
