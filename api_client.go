@@ -39,6 +39,7 @@ type APIClient struct {
 	Invoice         *InvoiceService
 	Account         *AccountService
 	Task            *TaskService
+	TaskAssignment  *TaskAssignmentService
 	Contact         *ContactService
 	Expense         *ExpenseService
 	ExpenseCategory *ExpenseCategoryService
@@ -71,6 +72,7 @@ func newAPIClient(subdomain string, httpClient *http.Client, cacheInterval time.
 	c.Invoice = &InvoiceService{Service{c}}
 	c.Account = &AccountService{Service{c}}
 	c.Task = &TaskService{Service{c}}
+	c.TaskAssignment = &TaskAssignmentService{Service{c}}
 	c.Contact = &ContactService{Service{c}}
 	c.Expense = &ExpenseService{Service{c}}
 	c.ExpenseCategory = &ExpenseCategoryService{Service{c}}

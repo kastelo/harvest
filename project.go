@@ -25,7 +25,7 @@ type Project struct {
 	OverBudgetNotificationPercentage float64 `json:"over_budget_notification_percentage"`
 	OverBudgetNotifiedAt             Date    `json:"over_budget_notified_at"`
 	CreatedAt                        Date    `json:"created_at"`
-	UpdateAt                         Date    `json:"updated_at"`
+	UpdatedAt                        Date    `json:"updated_at"`
 	HintEarliestRecordAt             Date    `json:"hint_earliest_record_at"`
 	HintLatestRecordAt               Date    `json:"hint_latest_record_at"`
 	StartsOn                         Date    `json:"starts_on"`
